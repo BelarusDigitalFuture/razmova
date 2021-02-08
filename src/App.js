@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { history } from "./helpers";
+import { alertActions } from "./helpers/store/actions";
+import { PrivateRoute } from "./components";
+import { HomePage } from "./routes/HomePage";
+import { LoginPage } from "./routes/LoginPage";
+import { RegisterPage } from "./routes/RegisterPage";
+import { getAlert } from "./helpers/store/selectors/selectors";
 
 function App() {
+  const alert = useSelector(getAlert);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    history.listen(() => {
+      dispatch(alertActions.clear());
+    });
+  }, [dispatch]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {alert.message && (
+        <div className={`alert ${alert.type}`}>{alert.message}</div>
+      )}
+      <Router history={history}>
+        <Switch>
+          <PrivateRoute exact path="/" component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Redirect from="*" to="/" />
+        </Switch>
+      </Router>
     </div>
   );
 }
 
-export default App;
+export { App };
