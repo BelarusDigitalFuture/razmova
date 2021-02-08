@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Razmova.Application.Services\Razmova.Application.Services.csproj" />
+    <ProjectReference Include="..\Razmova.Data\Razmova.Data.csproj" />
+    <ProjectReference Include="..\Razmova.Domain\Razmova.Domain.csproj" />
+    <ProjectReference Include="..\Razmova.Infrastructure.Services\Razmova.Infrastructure.Services.csproj" />
+  </ItemGroup>
+
+</Project>
