@@ -1,0 +1,125 @@
+.navigationBar {
+  display: flex;
+  height: 80px;
+  background: #fff;
+  border-bottom: 1px #e6e6e6 solid;
+}
+
+.imgSvg {
+  fill: #666;
+  vertical-align: middle;
+}
+
+.logo {
+  flex: 0 1 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-right: 1px #e6e6e6 solid;
+}
+
+.menuFilterLaws {
+  display: flex;
+  flex: 0 1 580px;
+  border-right: 1px #e6e6e6 solid;
+}
+
+.filterItems {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  list-style-type: none;
+  align-items: center;
+}
+
+.menuItemTitle {
+  padding: 1rem;
+}
+
+.searchBar {
+  flex: 0 1 677px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-right: 1px #e6e6e6 solid;
+}
+
+.searchInput {
+  background-color: #fff;
+  color: #666;
+  outline: none;
+  border: none;
+  flex: 29 1 0;
+  padding-left: 13.5px;
+}
+
+.addLaw {
+  flex: 0 1 262px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2rem;
+  padding-right: 1.5rem;
+  border-right: 1px #e6e6e6 solid;
+}
+
+.button {
+  border-radius: 6px;
+  border: 1px solid #d6331d;
+  background-color: #d6331d;
+  padding: 10px 12px 10px 16px;
+  color: #fdf3f2;
+  font-family: Gilroy-Bold;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 44px;
+}
+
+.button:active {
+  transform: scale(0.99);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.notifications {
+  flex: 0 1 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-right: 1px #e6e6e6 solid;
+}
+
+.userBlock {
+  flex: 0 1 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1.5rem;
+  padding-right: 2rem;
+
+  font-family: Gilroy;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.avatarImage {
+  border-radius: 50%;
+  height: 40px;
+}
+
+.userName {
+  padding-left: 1rem;
+  padding-right: 0.7rem;
+}
