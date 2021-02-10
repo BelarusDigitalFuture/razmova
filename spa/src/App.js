@@ -9,6 +9,7 @@ import { HomePage } from "./routes/HomePage";
 import { LoginPage } from "./routes/LoginPage";
 import { RegisterPage } from "./routes/RegisterPage";
 import { getAlert } from "./helpers/store/selectors/selectors";
+import { LoadDocumentPage } from "./routes/LoadDocumentPage/LoadDocumentPage";
 
 function App() {
   const alert = useSelector(getAlert);
@@ -29,6 +30,7 @@ function App() {
           <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
+          <Route path="/load" component={LoadDocumentPage} />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
