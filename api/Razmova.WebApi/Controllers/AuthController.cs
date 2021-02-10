@@ -9,7 +9,7 @@ namespace Razmova.WebApi.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AuthController : ApiControllerBase
     {
         private readonly IAuthService _authService;

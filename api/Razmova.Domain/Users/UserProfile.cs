@@ -13,6 +13,8 @@ namespace Razmova.Domain.Users
 
         public string LastName { get; set; }
 
+        public string AvatarLink { get; set; }
+
         public Sex Sex { get; set; }
 
         public DateTime? BirthDate { get; set; }

@@ -235,6 +235,37 @@ namespace Razmova.Data.Migrations
                     b.ToTable("EmploymentScopes");
                 });
 
+            modelBuilder.Entity("Razmova.Domain.Documents.File", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DonwloadLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FriendlyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsFilePathAbsolute")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Files");
+                });
+
             modelBuilder.Entity("Razmova.Domain.Education.Education", b =>
                 {
                     b.Property<Guid>("Id")
@@ -288,6 +319,114 @@ namespace Razmova.Data.Migrations
                     b.HasIndex("InstitutionId");
 
                     b.ToTable("Faculties");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.LawProjects.DraftLaw", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("DocumentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsNew")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ParentDraftLawId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("DocumentId");
+
+                    b.HasIndex("ParentDraftLawId");
+
+                    b.ToTable("DraftLaws");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.LawProjects.DraftLawCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DraftLawCategories");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.LawProjects.DraftLawDocument", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DirectLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("FileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileId");
+
+                    b.ToTable("DraftLawDocuments");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.LawProjects.ProjectParticipant", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CurrentEmploymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DraftLawId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("NameOrEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UserProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CurrentEmploymentId");
+
+                    b.HasIndex("DraftLawId");
+
+                    b.HasIndex("UserProfileId");
+
+                    b.ToTable("ProjectParticipants");
                 });
 
             modelBuilder.Entity("Razmova.Domain.Locations.Address", b =>
@@ -349,6 +488,25 @@ namespace Razmova.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.Tags.Tag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DraftLawId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DraftLawId");
+
+                    b.ToTable("Tag");
                 });
 
             modelBuilder.Entity("Razmova.Domain.Users.ApplicationUser", b =>
@@ -433,6 +591,9 @@ namespace Razmova.Data.Migrations
 
                     b.Property<Guid?>("AddressId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("AvatarLink")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime2");
@@ -537,6 +698,15 @@ namespace Razmova.Data.Migrations
                         .HasForeignKey("UserProfileId");
                 });
 
+            modelBuilder.Entity("Razmova.Domain.Documents.File", b =>
+                {
+                    b.HasOne("Razmova.Domain.Users.UserProfile", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Razmova.Domain.Education.Education", b =>
                 {
                     b.HasOne("Razmova.Domain.Education.Faculty", "Faculty")
@@ -551,6 +721,43 @@ namespace Razmova.Data.Migrations
                         .HasForeignKey("InstitutionId");
                 });
 
+            modelBuilder.Entity("Razmova.Domain.LawProjects.DraftLaw", b =>
+                {
+                    b.HasOne("Razmova.Domain.LawProjects.DraftLawCategory", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("Razmova.Domain.LawProjects.DraftLawDocument", "Document")
+                        .WithMany()
+                        .HasForeignKey("DocumentId");
+
+                    b.HasOne("Razmova.Domain.LawProjects.DraftLaw", "ParentDraftLaw")
+                        .WithMany()
+                        .HasForeignKey("ParentDraftLawId");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.LawProjects.DraftLawDocument", b =>
+                {
+                    b.HasOne("Razmova.Domain.Documents.File", "File")
+                        .WithMany()
+                        .HasForeignKey("FileId");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.LawProjects.ProjectParticipant", b =>
+                {
+                    b.HasOne("Razmova.Domain.Companies.Employment", "CurrentEmployment")
+                        .WithMany()
+                        .HasForeignKey("CurrentEmploymentId");
+
+                    b.HasOne("Razmova.Domain.LawProjects.DraftLaw", null)
+                        .WithMany("Participants")
+                        .HasForeignKey("DraftLawId");
+
+                    b.HasOne("Razmova.Domain.Users.UserProfile", "UserProfile")
+                        .WithMany()
+                        .HasForeignKey("UserProfileId");
+                });
+
             modelBuilder.Entity("Razmova.Domain.Locations.Address", b =>
                 {
                     b.HasOne("Razmova.Domain.Locations.City", "City")
@@ -563,6 +770,13 @@ namespace Razmova.Data.Migrations
                     b.HasOne("Razmova.Domain.Locations.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId");
+                });
+
+            modelBuilder.Entity("Razmova.Domain.Tags.Tag", b =>
+                {
+                    b.HasOne("Razmova.Domain.LawProjects.DraftLaw", null)
+                        .WithMany("Tags")
+                        .HasForeignKey("DraftLawId");
                 });
 
             modelBuilder.Entity("Razmova.Domain.Users.ApplicationUser", b =>

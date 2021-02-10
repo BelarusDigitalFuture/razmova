@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using Razmova.Domain.Mapping;
 using Razmova.Dto.Mapping;
 
 namespace Razmova.IoC.Extensions.Infrastructure
@@ -11,6 +12,7 @@ namespace Razmova.IoC.Extensions.Infrastructure
             var mapperConfiguration = new MapperConfiguration(config =>
             {
                 config.AddProfile<DomainDtoMappingProfile>();
+                config.AddProfile<DomainModelsMappingProfile>();
             });
 
             var mapper = mapperConfiguration.CreateMapper();

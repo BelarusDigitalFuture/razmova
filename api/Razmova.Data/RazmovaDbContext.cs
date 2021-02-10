@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Razmova.Domain.Companies;
+using Razmova.Domain.Documents;
 using Razmova.Domain.Education;
+using Razmova.Domain.LawProjects;
 using Razmova.Domain.Locations;
+using Razmova.Domain.Tags;
 using Razmova.Domain.Users;
 
 namespace Razmova.Data
@@ -27,5 +30,13 @@ namespace Razmova.Data
         public DbSet<Country> Countries { get; set; }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<File> Files { get; set; }
+
+        public DbSet<DraftLaw> DraftLaws { get; set; }
+        public DbSet<DraftLawCategory> DraftLawCategories { get; set; }
+        public DbSet<DraftLawDocument> DraftLawDocuments { get; set; }
+        public DbSet<ProjectParticipant> ProjectParticipants { get; set; }
+        public DbSet<Tag> Tag { get; set; }
     }
 }

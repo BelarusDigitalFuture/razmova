@@ -74,6 +74,9 @@ namespace Razmova.Application.Services.Auth
                 UserProfile = BuildUserProfile(credentials)
             };
 
+            //todo update instead of create if empty user found
+            var existingUser = await _userManager.FindByEmailAsync(credentials.Email);
+
             await ValidateCreateUserDataAsync(applicationUser);
             await SaveAsync(applicationUser, credentials.Password);
         }
