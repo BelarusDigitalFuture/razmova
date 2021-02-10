@@ -9,10 +9,10 @@ const StepsBar = ({ handleLinkClick }) => {
     {
       title: "Шаг 1",
       description: "Тип проекта и загрузка документа",
-      to: "/",
+      to: "/load/step1",
     },
-    { title: "Шаг 2", description: "Описание проекта", to: "/" },
-    { title: "Шаг 3", description: "Участники проекта", to: "/" },
+    { title: "Шаг 2", description: "Описание проекта", to: "/load/step2" },
+    { title: "Шаг 3", description: "Участники проекта", to: "/load/step3" },
   ];
 
   return (
