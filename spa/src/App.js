@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { StylesProvider } from "@material-ui/core/styles";
 
 import { history } from "./helpers";
 import { alertActions } from "./helpers/store/actions";
@@ -21,20 +22,22 @@ function App() {
     });
   }, [dispatch]);
   return (
-    <div>
-      {alert.message && (
-        <div className={`alert ${alert.type}`}>{alert.message}</div>
-      )}
-      <Router history={history}>
-        <Switch>
-          <PrivateRoute exact path="/" component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/load" component={LoadDocumentPage} />
-          <Redirect from="*" to="/" />
-        </Switch>
-      </Router>
-    </div>
+    <StylesProvider injectFirst>
+      <div>
+        {alert.message && (
+          <div className={`alert ${alert.type}`}>{alert.message}</div>
+        )}
+        <Router history={history}>
+          <Switch>
+            <PrivateRoute exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/load" component={LoadDocumentPage} />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </Router>
+      </div>
+    </StylesProvider>
   );
 }
 
