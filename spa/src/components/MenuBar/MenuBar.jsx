@@ -57,10 +57,12 @@ const MenuBar = ({ handleLinkClick }) => {
         <input type="text" className={styles.searchInput} placeholder="Поиск" />
       </div>
       <div className={styles.addLaw}>
-        <button className={styles.button}>
-          <Plus />
-          Добавить законопроект
-        </button>
+        <NavLink exact to="/load">
+          <button className={styles.button}>
+            <Plus />
+            Добавить законопроект
+          </button>
+        </NavLink>
       </div>
       <div className={styles.notifications}>
         <Notification />
