@@ -1,0 +1,54 @@
+.wrapper {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  border-bottom: 1px #e6e6e6 solid;
+}
+
+.label {
+  width: 158px;
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  color: #666666;
+}
+
+.info {
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  letter-spacing: -0.02em;
+
+  color: #000000;
+}
+
+.editBtn {
+  margin-left: 1rem;
+  border-radius: 6px;
+  border: 1px solid #fcebe9;
+  background-color: #fcebe9;
+  padding: 14px 24px;
+  color: #d6331d;
+  font-family: Gilroy-Bold;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  text-transform: none;
+}
+
+.editBtn:active {
+  transform: scale(0.99);
+}
+
+.editBtn:focus {
+  outline: none;
+}
