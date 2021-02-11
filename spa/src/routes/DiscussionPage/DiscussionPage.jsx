@@ -6,6 +6,8 @@ import author2 from "../../assets/images/author-2.png";
 import author3 from "../../assets/images/author-3.png";
 import author4 from "../../assets/images/author-4.png";
 import { ReactComponent as Find } from "../../assets/icons/find.svg";
+import { ReactComponent as Chat } from "../../assets/icons/Chat.svg";
+import { ReactComponent as ArrowLeft } from "../../assets/icons/ArrowLeft.svg";
 import styles from "./DiscussionPage.module.css";
 
 export function DiscussionPage() {
@@ -16,6 +18,7 @@ export function DiscussionPage() {
             </header>
             <main className={styles.content}>
                 <section className={styles.project}>
+                    <div className={styles.back}><ArrowLeft />Назад</div>
                     <article className={styles.text}>
                         2. Индивидуальный предприниматель до окончания налогового периода признается плательщиком в отношении всех объектов налогообложения:
                         при возникновении обстоятельства, указанного в подпункте 1.1 пункта 1 настоящей статьи, – начиная с 1-го числа месяца, следующего за месяцем возникновения такого обстоятельства;
@@ -60,6 +63,29 @@ export function DiscussionPage() {
                         1.1.14. по передаче абонентом субабонентам всех видов полученных энергии, газа, воды;
                         1.2. ввоз товаров на территорию Республики Беларусь и (или) иные обстоятельства, с наличием которых настоящий Кодекс и (или) акты Президента Республики Беларусь, таможенное законодательство, международные договоры Республики Беларусь, составляющие право Евразийского экономического союза, связывают возникновение обязанности по уплате налога на добавленную стоимость.
                     </article>
+                    <button type="button" className={styles.anchor}>
+                        <span>34</span>
+                        <div className={styles.bubble}>
+                            <div className={styles.icon}> <Chat /></div>
+                            <span>№ 164</span>
+                        </div>
+                    </button>
+                    <button type="button" className={styles.anchor}>
+                        <span>34</span>
+                        <div className={styles.bubble}>
+                            <div className={styles.icon}> <Chat /></div>
+                            <span>№ 165</span>
+                        </div>
+                    </button>
+                    <button type="button" className={classnames(styles.anchor, styles.anchorCreate)}>
+                        <span>Начать обсуждение</span>
+                        <div className={styles.icon}>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.875 6H10.125" stroke="#F0FEF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M6 1.875V10.125" stroke="#F0FEF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </button>
                 </section>
                 <section className={styles.discussion}>
                     <div>
@@ -147,21 +173,21 @@ export function DiscussionPage() {
                                                 </svg>
                                             В ИЗБРАННОЕ
                                             </button>
-                                            <button type="button" className={styles.upvotes}>
+                                            <button type="button" className={classnames(styles.upvotes, styles.selected)}>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.99963 6.5H4.99963V13H1.99963C1.86703 13 1.73985 12.9473 1.64608 12.8536C1.55231 12.7598 1.49963 12.6326 1.49963 12.5V7C1.49963 6.86739 1.55231 6.74021 1.64608 6.64645C1.73985 6.55268 1.86703 6.5 1.99963 6.5V6.5Z" stroke="#F2FBF7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M4.99963 6.5L7.49963 1.5C7.76228 1.5 8.02235 1.55173 8.265 1.65224C8.50765 1.75275 8.72813 1.90007 8.91385 2.08579C9.09956 2.2715 9.24688 2.49198 9.34739 2.73463C9.4479 2.97728 9.49963 3.23736 9.49963 3.5V5H13.3669C13.5086 5 13.6488 5.03015 13.7781 5.08846C13.9073 5.14677 14.0227 5.2319 14.1165 5.3382C14.2104 5.4445 14.2805 5.56954 14.3224 5.70502C14.3642 5.84051 14.3767 5.98334 14.3591 6.12403L13.6091 12.124C13.5789 12.3659 13.4614 12.5884 13.2787 12.7497C13.0959 12.911 12.8606 13 12.6169 13H4.99963" stroke="#F2FBF7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M1.99963 6.5H4.99963V13H1.99963C1.86703 13 1.73985 12.9473 1.64608 12.8536C1.55231 12.7598 1.49963 12.6326 1.49963 12.5V7C1.49963 6.86739 1.55231 6.74021 1.64608 6.64645C1.73985 6.55268 1.86703 6.5 1.99963 6.5V6.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M4.99963 6.5L7.49963 1.5C7.76228 1.5 8.02235 1.55173 8.265 1.65224C8.50765 1.75275 8.72813 1.90007 8.91385 2.08579C9.09956 2.2715 9.24688 2.49198 9.34739 2.73463C9.4479 2.97728 9.49963 3.23736 9.49963 3.5V5H13.3669C13.5086 5 13.6488 5.03015 13.7781 5.08846C13.9073 5.14677 14.0227 5.2319 14.1165 5.3382C14.2104 5.4445 14.2805 5.56954 14.3224 5.70502C14.3642 5.84051 14.3767 5.98334 14.3591 6.12403L13.6091 12.124C13.5789 12.3659 13.4614 12.5884 13.2787 12.7497C13.0959 12.911 12.8606 13 12.6169 13H4.99963" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
 
                                             +374
                                             </button>
                                             <button type="button" className={styles.downvotes}>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.99963 3H4.99963V9.5H1.99963C1.86703 9.5 1.73985 9.44732 1.64608 9.35355C1.55231 9.25979 1.49963 9.13261 1.49963 9V3.5C1.49963 3.36739 1.55231 3.24021 1.64608 3.14645C1.73985 3.05268 1.86703 3 1.99963 3V3Z" stroke="#E0372F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M4.99963 9.5L7.49963 14.5C7.76228 14.5 8.02235 14.4483 8.265 14.3478C8.50765 14.2472 8.72813 14.0999 8.91385 13.9142C9.09956 13.7285 9.24688 13.508 9.34739 13.2654C9.4479 13.0227 9.49963 12.7626 9.49963 12.5V11H13.3669C13.5086 11 13.6488 10.9698 13.7781 10.9115C13.9073 10.8532 14.0227 10.7681 14.1165 10.6618C14.2104 10.5555 14.2805 10.4305 14.3224 10.295C14.3642 10.1595 14.3767 10.0167 14.3591 9.87597L13.6091 3.87597C13.5789 3.63411 13.4614 3.41163 13.2787 3.25032C13.0959 3.08902 12.8606 3 12.6169 3H4.99963" stroke="#E0372F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M1.99963 3H4.99963V9.5H1.99963C1.86703 9.5 1.73985 9.44732 1.64608 9.35355C1.55231 9.25979 1.49963 9.13261 1.49963 9V3.5C1.49963 3.36739 1.55231 3.24021 1.64608 3.14645C1.73985 3.05268 1.86703 3 1.99963 3V3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M4.99963 9.5L7.49963 14.5C7.76228 14.5 8.02235 14.4483 8.265 14.3478C8.50765 14.2472 8.72813 14.0999 8.91385 13.9142C9.09956 13.7285 9.24688 13.508 9.34739 13.2654C9.4479 13.0227 9.49963 12.7626 9.49963 12.5V11H13.3669C13.5086 11 13.6488 10.9698 13.7781 10.9115C13.9073 10.8532 14.0227 10.7681 14.1165 10.6618C14.2104 10.5555 14.2805 10.4305 14.3224 10.295C14.3642 10.1595 14.3767 10.0167 14.3591 9.87597L13.6091 3.87597C13.5789 3.63411 13.4614 3.41163 13.2787 3.25032C13.0959 3.08902 12.8606 3 12.6169 3H4.99963" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
 
-                                        -32
+                                            -32
                                         </button>
                                         </div>
                                     </div>
@@ -191,18 +217,17 @@ export function DiscussionPage() {
                                 <div className={styles.comment}>
                                     <div className={styles.commentInfo}>
                                         <div className={styles.commentAuthorBox}>
-                                            <img src={author3} alt="" />
+                                            <img src={author4} alt="" />
                                             <div>
                                                 <div className={styles.commentAuthor}>
                                                     <div className={styles.commentAuthorName}>
-                                                        <span>Валерия Пугачева</span>
+                                                        <span>Валентин Аверин</span>
                                                         <ul className={styles.commentAuthorTags}>
-                                                            <li className={styles.commentAuthorExpert}>Эксперт</li>
                                                             <li className={styles.commentAuthorRating}>Рейтинг: +737</li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <p className={styles.commentAuthorTitle}>Бывший инспектор по налогам и сборам</p>
+                                                <p className={styles.commentAuthorTitle}>Безработный</p>
                                             </div>
 
                                         </div>
@@ -217,25 +242,24 @@ export function DiscussionPage() {
                                             </button>
                                             <button type="button" className={styles.upvotes}>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.99963 6.5H4.99963V13H1.99963C1.86703 13 1.73985 12.9473 1.64608 12.8536C1.55231 12.7598 1.49963 12.6326 1.49963 12.5V7C1.49963 6.86739 1.55231 6.74021 1.64608 6.64645C1.73985 6.55268 1.86703 6.5 1.99963 6.5V6.5Z" stroke="#F2FBF7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M4.99963 6.5L7.49963 1.5C7.76228 1.5 8.02235 1.55173 8.265 1.65224C8.50765 1.75275 8.72813 1.90007 8.91385 2.08579C9.09956 2.2715 9.24688 2.49198 9.34739 2.73463C9.4479 2.97728 9.49963 3.23736 9.49963 3.5V5H13.3669C13.5086 5 13.6488 5.03015 13.7781 5.08846C13.9073 5.14677 14.0227 5.2319 14.1165 5.3382C14.2104 5.4445 14.2805 5.56954 14.3224 5.70502C14.3642 5.84051 14.3767 5.98334 14.3591 6.12403L13.6091 12.124C13.5789 12.3659 13.4614 12.5884 13.2787 12.7497C13.0959 12.911 12.8606 13 12.6169 13H4.99963" stroke="#F2FBF7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M1.99963 6.5H4.99963V13H1.99963C1.86703 13 1.73985 12.9473 1.64608 12.8536C1.55231 12.7598 1.49963 12.6326 1.49963 12.5V7C1.49963 6.86739 1.55231 6.74021 1.64608 6.64645C1.73985 6.55268 1.86703 6.5 1.99963 6.5V6.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M4.99963 6.5L7.49963 1.5C7.76228 1.5 8.02235 1.55173 8.265 1.65224C8.50765 1.75275 8.72813 1.90007 8.91385 2.08579C9.09956 2.2715 9.24688 2.49198 9.34739 2.73463C9.4479 2.97728 9.49963 3.23736 9.49963 3.5V5H13.3669C13.5086 5 13.6488 5.03015 13.7781 5.08846C13.9073 5.14677 14.0227 5.2319 14.1165 5.3382C14.2104 5.4445 14.2805 5.56954 14.3224 5.70502C14.3642 5.84051 14.3767 5.98334 14.3591 6.12403L13.6091 12.124C13.5789 12.3659 13.4614 12.5884 13.2787 12.7497C13.0959 12.911 12.8606 13 12.6169 13H4.99963" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
 
-                                            +374
+                                            +37
                                             </button>
-                                            <button type="button" className={styles.downvotes}>
+                                            <button type="button" className={classnames(styles.downvotes, styles.selected)}>
                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.99963 3H4.99963V9.5H1.99963C1.86703 9.5 1.73985 9.44732 1.64608 9.35355C1.55231 9.25979 1.49963 9.13261 1.49963 9V3.5C1.49963 3.36739 1.55231 3.24021 1.64608 3.14645C1.73985 3.05268 1.86703 3 1.99963 3V3Z" stroke="#E0372F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M4.99963 9.5L7.49963 14.5C7.76228 14.5 8.02235 14.4483 8.265 14.3478C8.50765 14.2472 8.72813 14.0999 8.91385 13.9142C9.09956 13.7285 9.24688 13.508 9.34739 13.2654C9.4479 13.0227 9.49963 12.7626 9.49963 12.5V11H13.3669C13.5086 11 13.6488 10.9698 13.7781 10.9115C13.9073 10.8532 14.0227 10.7681 14.1165 10.6618C14.2104 10.5555 14.2805 10.4305 14.3224 10.295C14.3642 10.1595 14.3767 10.0167 14.3591 9.87597L13.6091 3.87597C13.5789 3.63411 13.4614 3.41163 13.2787 3.25032C13.0959 3.08902 12.8606 3 12.6169 3H4.99963" stroke="#E0372F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M1.99963 3H4.99963V9.5H1.99963C1.86703 9.5 1.73985 9.44732 1.64608 9.35355C1.55231 9.25979 1.49963 9.13261 1.49963 9V3.5C1.49963 3.36739 1.55231 3.24021 1.64608 3.14645C1.73985 3.05268 1.86703 3 1.99963 3V3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M4.99963 9.5L7.49963 14.5C7.76228 14.5 8.02235 14.4483 8.265 14.3478C8.50765 14.2472 8.72813 14.0999 8.91385 13.9142C9.09956 13.7285 9.24688 13.508 9.34739 13.2654C9.4479 13.0227 9.49963 12.7626 9.49963 12.5V11H13.3669C13.5086 11 13.6488 10.9698 13.7781 10.9115C13.9073 10.8532 14.0227 10.7681 14.1165 10.6618C14.2104 10.5555 14.2805 10.4305 14.3224 10.295C14.3642 10.1595 14.3767 10.0167 14.3591 9.87597L13.6091 3.87597C13.5789 3.63411 13.4614 3.41163 13.2787 3.25032C13.0959 3.08902 12.8606 3 12.6169 3H4.99963" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
 
-                                        -32
+                                            -39
                                         </button>
                                         </div>
                                     </div>
                                     <p className={styles.commentText}>
-                                        В своей работе постоянно сталкивалась с проблемами правильного консультирования населения насчёт статьи 115.
-                                        Хотелось бы обсудить с экспертной группой данную статью тут, чтобы предложить адекватные изменения.
+                                        Ой да кому воообще нужны ваши налоги, нету налогов – нету проблем
                                 </p>
                                     <div className={styles.commentReply}>
                                         <button type="button" className={styles.button}>
@@ -251,7 +275,7 @@ export function DiscussionPage() {
                                 </div>
 
                                 <div className={styles.commentOpen}>
-                                    <button type="button">Открыть обсуждение (127)</button>
+                                    <button type="button">Открыть обсуждение (8)</button>
                                 </div>
                             </li>
                         </ul>

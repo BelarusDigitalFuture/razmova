@@ -38,7 +38,7 @@ function App() {
       )}
       <Router history={history}>
         <Switch>
-          {/* <PrivateRoute exact path="/" component={HomePage} /> */}
+          <PrivateRoute exact path="/" component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/load" component={LoadDocumentPage} />
