@@ -80,6 +80,10 @@
   height: 44px;
 }
 
+.button * {
+  flex-shrink: 0;
+}
+
 .button:active {
   transform: scale(0.99);
 }

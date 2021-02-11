@@ -1,0 +1,408 @@
+.root {
+    overflow: hidden;
+    height: 100%;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr minmax(min-content, 300px);
+    column-gap: 24px;
+    height: calc(100% - 80px);
+}
+
+.project {
+    overflow-y: auto;
+    height: 100%;
+    padding: 24px 32px 24px 24px;
+    grid-row: 1 / -1;
+    grid-column: 1 / 2;
+}
+
+.discussion {
+    overflow-y: auto;
+    height: 100%;
+    padding-top: 24px;
+    position: relative;
+    grid-row: 1 /2;
+    grid-column: 2 / 3;
+}
+
+.text {
+    position: relative;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    color: #000;
+}
+
+
+.text::after {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    content: "";
+    display: block;
+    background-color: red;
+}
+
+.input {
+    width: 100%;
+}
+
+
+.discussion {
+    padding: 24px 32px 0;
+}
+
+.title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.2px;
+}
+
+.subtitle {
+    margin: 16px 0 0 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.projectCaption {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+}
+
+
+.tags, .authors, .statuses, .authors, .comments, .commentAuthorTags {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tags {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.statuses {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.status::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background: #B2B2B2;
+ }
+
+.status:last-child::after { display: none; }
+
+
+.tag, .status {
+    position: relative;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #272727;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding: 4px 8px;
+    background-color: #F2F2F2;
+    border-radius: 5px
+}
+
+.status {
+    color: #B2B2B2;
+}
+
+.tagHighlighted {
+    background-color: #E6F6FE;
+    color:#1B7CEE; 
+}
+
+.statusHighlighted {
+    color: #F97A04;
+    background-color: #FFF7E6;
+
+}
+
+.projectMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.deadline {
+    flex-shrink: 0;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #666666;
+    padding: 4px 8px;
+    border: 1px solid #B3B3B3;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.deadline span {
+    margin-left: 4px;
+}
+
+.authors {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    margin-bottom: 8px;
+}
+
+.author:last-of-type {
+    margin-right: 0;
+}
+
+.author span {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+
+    color: #000000;
+}
+
+.authorCount span {
+    padding: 4px 12px;
+    background-color: #FEF0FE;
+    border-radius: 8px;
+    color: #B014E6;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.02em
+}
+
+.author img {
+    margin-right: 10px;
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border: 1px solid #E6E6E6;
+    margin-top: 28px;
+    margin-bottom: 18px;
+  }
+
+  
+  .searchInput {
+    background-color: #fff;
+    color: #666;
+    outline: none;
+    border: none;
+    margin: 0;
+    padding-left: 13.5px;
+  }
+
+  .comment {
+      padding: 24px;
+      margin: 16px 0;
+      background-color: #F9F9F9;
+  }
+
+  .commentAuthorBox {
+      display: flex;
+      flex-shrink: 0;
+      margin-bottom: 8px;
+  }
+
+  .commentAuthor {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .commentInfo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
+
+  .commentActions {
+      display: flex;
+      align-items: flex-start;
+  }
+
+
+  .commentInfo img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      margin-right: 12px;
+  }
+
+  .commentAuthorName {
+      display: flex;
+      font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.02em;
+  }
+
+
+.commentAuthorTags {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.commentAuthorTags li {
+    margin-right: 6px;
+    padding: 1px 4px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+}
+
+.commentAuthorTags li:last-of-type {
+    margin-right: 0;
+}
+
+.commentAuthorTitle {
+    margin: 0;
+    color: #666666;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+}
+
+.commentAuthorExpert {
+    color: #F0F9FF;
+    background: #1B7CEE;
+    border-radius: 4px;
+}
+
+.commentAuthorRating {
+    color: #17B579;
+    background: #D1F0E4;
+    border-radius: 4px;
+}
+
+.button, .upvotes, .downvotes {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    border: none;
+    box-shadow: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button svg, .upvotes svg, .downvotes svg {
+    margin-right: 6px;
+}
+
+.button {
+    color: #666666;
+    padding: 8px 12px;
+    border: 1px solid #E6E6E6;
+    margin-right: 8px;
+}
+
+.upvotes {
+    padding: 8px 12px;
+    color: #F2FBF7;
+    background-color: #17B579;
+    margin-right: 8px;
+}
+
+.downvotes {
+    padding: 8px 12px;
+    color: #E0372F;
+    background-color: #FDE4D5;
+}
+
+
+.commentText {
+    margin: 24px 0 16px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+}
+
+.commentOpen {
+    margin: 20px 0 20px;
+    padding-left: 20px;
+    border-left: 1px solid #E6E6E6;
+}
+
+
+.commentOpen button {
+    color: #D6331D;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.inputBox {
+    position: relative;
+    grid-row: 2 / -1;
+    grid-column: 2/ 3;
+    margin: 16px 24px;
+    
+}
+
+.input {
+    padding: 32px 40px;
+    border: 1px solid #E6E6E6;
+}
+
+.input::placeholder {
+    color: #666666;
+}
+
+.submit {
+    position: absolute;
+    padding: 6px;
+    right: 24px;
+    bottom: 24px;
+    border: none;
+    box-shadow: none;
+    background-color: #D6331D;
+    border-radius: 8px;
+    cursor: pointer;
+}

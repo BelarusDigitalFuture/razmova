@@ -9,6 +9,7 @@ import { PrivateRoute } from "./components";
 import { HomePage } from "./routes/HomePage";
 import { LoginPage } from "./routes/LoginPage";
 import { RegisterPage } from "./routes/RegisterPage";
+import { DiscussionPage } from "./routes/DiscussionPage/DiscussionPage";
 import { getAlert } from "./helpers/store/selectors/selectors";
 import { LoadDocumentPage } from "./routes/LoadDocumentPage/LoadDocumentPage";
 
@@ -23,20 +24,19 @@ function App() {
   }, [dispatch]);
   return (
     <StylesProvider injectFirst>
-      <div>
-        {alert.message && (
-          <div className={`alert ${alert.type}`}>{alert.message}</div>
-        )}
-        <Router history={history}>
-          <Switch>
-            <PrivateRoute exact path="/" component={HomePage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/load" component={LoadDocumentPage} />
-            <Redirect from="*" to="/" />
-          </Switch>
-        </Router>
-      </div>
+      {alert.message && (
+        <div className={`alert ${alert.type}`}>{alert.message}</div>
+      )}
+      <Router history={history}>
+        <Switch>
+          {/* <PrivateRoute exact path="/" component={HomePage} /> */}
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/load" component={LoadDocumentPage} />
+          <Route path="/discussion/:id" component={DiscussionPage} />
+          <Redirect from="*" to="/" />
+        </Switch>
+      </Router>
     </StylesProvider>
   );
 }

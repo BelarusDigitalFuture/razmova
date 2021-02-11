@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
 }
 
 @font-face {
@@ -29,7 +30,7 @@
 }
 
 html,
-body {
+body, #root {
   height: 100%;
 }
 
@@ -47,4 +48,8 @@ a:visited {
   font-size: 1rem;
   text-decoration: none;
   transition: 200ms;
+}
+
+input, textarea {
+  font-family: inherit;
 }
