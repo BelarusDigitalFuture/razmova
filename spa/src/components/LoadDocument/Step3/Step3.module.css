@@ -1,0 +1,81 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2.5rem;
+  padding-top: 2rem;
+  width: calc(100vw - 492px);
+}
+
+.title {
+  font-family: Gilroy-Bold;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.formLabel {
+  margin-top: 1rem;
+  color: #666;
+  font-family: Gilroy;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.button {
+  border-radius: 6px;
+  border: 1px solid #d6331d;
+  background-color: #d6331d;
+  padding: 10px 12px 10px 16px;
+  color: #fdf3f2;
+  font-family: Gilroy-Bold;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  text-transform: none;
+}
+
+.button > svg > path {
+  stroke: #fdf3f2;
+}
+
+.button:active {
+  transform: scale(0.99);
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.saveDrawBtn {
+  margin-left: 1rem;
+  border: 1px solid #fcebe9;
+  background-color: #fcebe9;
+  color: #d6331d;
+}
+
+.openPreviewBtn {
+  margin-left: 1rem;
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: #d6331d;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 3rem;
+}
