@@ -56,7 +56,7 @@ const Step3 = () => {
           <button className={classNames(styles.button, styles.saveDrawBtn)}>
             <span>Сохранить в черновик</span>
           </button>
-          <NavLink exact to="/load/preview">
+          <NavLink exact to="/discussion/123">
             <button
               className={classNames(styles.button, styles.openPreviewBtn)}
             >

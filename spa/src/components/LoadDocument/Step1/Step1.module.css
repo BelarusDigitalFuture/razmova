@@ -60,15 +60,50 @@
 
 .button:focus {
   outline: none;
+  border: 3px solid #de5846;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.btnGroup {
+  width: 100%;
+}
+
+.btnGroup .switchBtn {
+  border-color: #fcebe9;
+}
+
+.switchBtn {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+  border: 1px solid #fcebe9;
+  background-color: #fcebe9;
+  padding: 14px 24px;
+  color: #d6331d;
+  font-family: Gilroy-Bold;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  text-transform: none;
+}
+
+.switchBtn:hover {
+  background: #ae2917;
+  color: #fdf3f2;
+  border: 1px solid #ae2917;
+}
+
+.switchBtn:focus {
+  border: 3px solid #de5846;
 }
 
 .btnActive {
-  background-color: blue;
-}
-
-.dnd {
-  height: 294px;
-  width: 100%;
-  background-color: #f9f9f9;
-  margin-bottom: 1rem;
+  background-color: #e0372f;
+  color: #fdf3f2;
 }

@@ -26,11 +26,17 @@ const Step1 = () => {
       <div className={styles.title}>Тип и загрузка проекта</div>
       <div>
         <div className={styles.subtitle}>Что Вы хотите сделать?</div>
-        <ButtonGroup disableElevation variant="contained" color="primary">
+        <ButtonGroup
+          fullWidth
+          className={styles.btnGroup}
+          disableElevation
+          variant="contained"
+          color="primary"
+        >
           <Button
             onClick={onStatus}
             className={classNames(
-              styles.button,
+              styles.switchBtn,
               isNewLawActive ? styles.btnActive : ""
             )}
           >
@@ -39,7 +45,7 @@ const Step1 = () => {
           <Button
             onClick={onStatus}
             className={classNames(
-              styles.button,
+              styles.switchBtn,
               isEditLawActive ? styles.btnActive : ""
             )}
           >
@@ -47,11 +53,17 @@ const Step1 = () => {
           </Button>
         </ButtonGroup>
         <div className={styles.subtitle}>Тип нормативного акта</div>
-        <ButtonGroup disableElevation variant="contained" color="primary">
+        <ButtonGroup
+          fullWidth
+          className={styles.btnGroup}
+          disableElevation
+          variant="contained"
+          color="primary"
+        >
           <Button
             onClick={onLawType}
             className={classNames(
-              styles.button,
+              styles.switchBtn,
               isLawChecked ? styles.btnActive : ""
             )}
           >
@@ -60,7 +72,7 @@ const Step1 = () => {
           <Button
             onClick={onLawType}
             className={classNames(
-              styles.button,
+              styles.switchBtn,
               isCodeChecked ? styles.btnActive : ""
             )}
           >
@@ -68,7 +80,6 @@ const Step1 = () => {
           </Button>
         </ButtonGroup>
         <div className={styles.subtitle}>Загрузка документа</div>
-        {/* <div className={styles.dnd}>Перенесите сюда документ</div> */}
         <UploadFile />
         <NavLink exact to="/load/step2">
           <button className={styles.button}>
