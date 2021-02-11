@@ -30,9 +30,11 @@ const MenuBar = ({ handleLinkClick }) => {
 
   return (
     <div className={styles.navigationBar}>
-      <div className={styles.logo}>
-        <Logo />
-      </div>
+      <NavLink exact to="/">
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+      </NavLink>
       <div className={styles.menuFilterLaws}>
         <ul className={styles.filterItems}>
           {MenuItems.map((item) => (
@@ -60,7 +62,7 @@ const MenuBar = ({ handleLinkClick }) => {
         <NavLink exact to="/load">
           <button className={styles.button}>
             <Plus />
-            Добавить законопроект
+            <span className={styles.addLawTitle}>Добавить законопроект</span>
           </button>
         </NavLink>
       </div>
