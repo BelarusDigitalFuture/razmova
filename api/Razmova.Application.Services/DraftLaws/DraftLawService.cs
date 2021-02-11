@@ -143,6 +143,7 @@ namespace Razmova.Application.Services.DraftLaws
         private async Task<IList<ProjectParticipant>> GetOrCreateParticipantsAsync(NewDraftLawRequestModel model)
         {
             var emails = model.Participants
+                .Concat(model.Initiators)
                 .Where(x => IsEmail(x.NameOrEmail))
                 .Select(x => x.NameOrEmail)
                 .Distinct()
@@ -153,32 +154,44 @@ namespace Razmova.Application.Services.DraftLaws
 
             foreach (var participant in model.Participants)
             {
-                var correspondingUserProfile =
-                    savedUsersParticipants.FirstOrDefault(x => x.ApplicationUser.Email == participant.NameOrEmail);
+                AddParticipant(participantList, savedUsersParticipants, participant, false);
+            }
 
-                if (correspondingUserProfile != null && correspondingUserProfile.Employments.Count == 0)
-                {
-                    correspondingUserProfile.Employments.Add(new Employment { Position = participant.JobPosition });
-                }
-
-                if (correspondingUserProfile == null)
-                {
-                    correspondingUserProfile = new UserProfile
-                    {
-                        FirstName = participant.NameOrEmail,
-                        ApplicationUser = new ApplicationUser { UserName = participant.NameOrEmail },
-                        Employments = new List<Employment> { new Employment { Position = participant.JobPosition } }
-                    };
-                }
-
-                participantList.Add(new ProjectParticipant
-                {
-                    NameOrEmail = participant.NameOrEmail,
-                    UserProfile = correspondingUserProfile
-                });
+            foreach (var participant in model.Initiators)
+            {
+                AddParticipant(participantList, savedUsersParticipants, participant, true);
             }
 
             return participantList;
+        }
+
+        private void AddParticipant(List<ProjectParticipant> participants, IList<UserProfile> correspondingProfiles,
+            NewParticipant newParticipant, bool isInitiator)
+        {
+            var correspondingUserProfile =
+                correspondingProfiles.FirstOrDefault(x => x.ApplicationUser.Email == newParticipant.NameOrEmail);
+
+            if (correspondingUserProfile != null && correspondingUserProfile.Employments.Count == 0)
+            {
+                correspondingUserProfile.Employments.Add(new Employment { Position = newParticipant.JobPosition });
+            }
+
+            if (correspondingUserProfile == null)
+            {
+                correspondingUserProfile = new UserProfile
+                {
+                    FirstName = newParticipant.NameOrEmail,
+                    ApplicationUser = new ApplicationUser { UserName = newParticipant.NameOrEmail },
+                    Employments = new List<Employment> { new Employment { Position = newParticipant.JobPosition } }
+                };
+            }
+
+            participants.Add(new ProjectParticipant
+            {
+                NameOrEmail = newParticipant.NameOrEmail,
+                UserProfile = correspondingUserProfile,
+                IsInitiator = isInitiator
+            });
         }
 
         private static bool IsEmail(string value)

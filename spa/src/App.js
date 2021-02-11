@@ -3,18 +3,19 @@ import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { StylesProvider } from "@material-ui/core/styles";
 
-import { history } from "./helpers";
-import { alertActions } from "./helpers/store/actions";
+import { history, getAuthorizedUserId } from "@helpers";
+import { alertActions, userActions } from "./helpers/store/actions";
 import { PrivateRoute } from "./components";
 import { HomePage } from "./routes/HomePage";
 import { LoginPage } from "./routes/LoginPage";
 import { RegisterPage } from "./routes/RegisterPage";
 import { DiscussionPage } from "./routes/DiscussionPage/DiscussionPage";
-import { getAlert } from "./helpers/store/selectors/selectors";
+import { getAlert, getAuth } from "./helpers/store/selectors/selectors";
 import { LoadDocumentPage } from "./routes/LoadDocumentPage/LoadDocumentPage";
 
 function App() {
   const alert = useSelector(getAlert);
+  const auth = useSelector(getAuth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,6 +23,14 @@ function App() {
       dispatch(alertActions.clear());
     });
   }, [dispatch]);
+
+  useEffect(() => {
+    const authorizedUserId = getAuthorizedUserId();
+    const shouldLoadProfile = authorizedUserId && authorizedUserId !== auth.user?.id;
+
+    shouldLoadProfile && dispatch(userActions.getCurrent());
+  }, [auth.accessToken]);
+
   return (
     <StylesProvider injectFirst>
       {alert.message && (

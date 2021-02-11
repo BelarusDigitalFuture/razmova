@@ -7,5 +7,7 @@ namespace Razmova.Domain.LawProjects
         public string NameOrEmail { get; set; }
 
         public UserProfile UserProfile { get; set; }
+
+        public bool IsInitiator { get; set; }
     }
 }

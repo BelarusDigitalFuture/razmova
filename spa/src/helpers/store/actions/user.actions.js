@@ -9,6 +9,7 @@ export const userActions = {
   register,
   update,
   getAll,
+  getCurrent,
   delete: _delete,
 };
 
@@ -139,5 +140,26 @@ function _delete(id) {
   }
   function failure(id, error) {
     return { type: userConstants.DELETE_FAILURE, id, error };
+  }
+}
+
+function getCurrent() {
+  return (dispatch) => {
+    dispatch(request());
+
+    userService.getCurrent().then(
+      (user) => dispatch(success(user)),
+      (error) => dispatch(failure(error.toString()))
+    );
+  };
+
+  function request() {
+    return { type: userConstants.GET_CURRENT_REQUEST };
+  }
+  function success(user) {
+    return { type: userConstants.GET_CURRENT_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.GET_CURRENT_FAILURE, error };
   }
 }

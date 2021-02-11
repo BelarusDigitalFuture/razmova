@@ -3,6 +3,11 @@
   margin-bottom: 1.5rem;
   display: flex;
   border-bottom: 1px #e6e6e6 solid;
+  flex-wrap: wrap;
+}
+
+.item {
+  margin-right: 2.5rem;
 }
 
 .label {

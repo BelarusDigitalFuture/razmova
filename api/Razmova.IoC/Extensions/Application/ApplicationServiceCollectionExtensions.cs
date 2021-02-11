@@ -17,7 +17,7 @@ namespace Razmova.IoC.Extensions.Application
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ISystemNotificationService, SystemNotificationService>();
             services.AddTransient<IFilesService, FileService>();
-            services.AddTransient<IFtpFileService, FtpFileService>();
+            services.AddTransient<IDiskFileService, DiskFileService>();
             services.AddTransient<IDraftLawService, DraftLawService>();
             services.AddTransient<IDraftLawCategoryService, DraftLawCategoryService>();
 

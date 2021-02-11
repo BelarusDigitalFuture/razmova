@@ -29,6 +29,7 @@ yarn-error.log*
 .vs
 bin
 obj
+wwwroot
 
 # User-specific files
 *.rsuser

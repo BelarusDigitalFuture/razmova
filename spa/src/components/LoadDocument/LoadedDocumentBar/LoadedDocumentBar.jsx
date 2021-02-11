@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 import styles from "./LoadedDocumentBar.module.css";
 
 const documentInfo = [
@@ -15,9 +17,11 @@ const LoadedDocumentBar = () => {
           <div className={styles.info}>{item.info}</div>
         </div>
       ))}
-      <button className={styles.editBtn}>
-        <span>Изменить</span>
-      </button>
+      <NavLink exact to="/load/step1">
+        <button className={styles.editBtn}>
+          <span>Изменить</span>
+        </button>
+      </NavLink>
     </div>
   );
 };

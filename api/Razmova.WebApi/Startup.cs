@@ -27,7 +27,14 @@ namespace Razmova.WebApi
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
+            services.AddCors(options => options.AddPolicy("AllowAllCors", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
             IoCContainer.RegisterServices(services, Configuration);
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "wwwroot";
+            });
 
             services.AddRazmovaSwagger();
         }
@@ -39,17 +46,25 @@ namespace Razmova.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
+            if (!env.IsDevelopment())
+            {
+                app.UseSpaStaticFiles();
+            }
+
+            app.UseCors("AllowAllCors");
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-                c.RoutePrefix = string.Empty;
+                c.RoutePrefix = "docs";
             });
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
+            
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -59,6 +74,11 @@ namespace Razmova.WebApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "wwwroot";
             });
         }
     }

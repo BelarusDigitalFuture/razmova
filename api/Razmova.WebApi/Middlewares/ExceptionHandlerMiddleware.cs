@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Razmova.WebApi.Models;
 
 namespace Razmova.WebApi.Middlewares
 {
@@ -41,7 +42,7 @@ namespace Razmova.WebApi.Middlewares
 
         private async Task WriteResponseAsync(HttpContext context, Exception exception)
         {
-            var content = exception.Message;
+            var content = CreateError(exception);
             var statusCode = GetStatusCode(exception);
 
             await WriteResponseAsync(context, content, statusCode);
@@ -66,6 +67,17 @@ namespace Razmova.WebApi.Middlewares
             context.Response.ContentType = "application/json";
 
             await context.Response.WriteAsync(JsonConvert.SerializeObject(content), Encoding.UTF8);
+        }
+
+        private Error CreateError(Exception ex)
+        {
+            switch (ex)
+            {
+                case ArgumentException argumentException:
+                    return new Error { Fields = argumentException.ParamName, Message = argumentException.Message };
+                default:
+                    return new Error { Message = ex.Message };
+            }
         }
 
         private static HttpStatusCode GetStatusCode(Exception exception)

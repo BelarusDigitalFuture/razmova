@@ -12,9 +12,7 @@ namespace Razmova.IoC.Extensions.Infrastructure
             services.AddDatabaseServices(configuration);
             services.AddMapping();
 
-            services.AddTransient<IFtpClient, FtpClient>();
-
-            services.Configure<FtpOptions>(configuration.GetSection("Ftp"));
+            services.AddTransient<IDiskStorageClient, DiskStorageClient>();
 
             return services;
         }

@@ -15,8 +15,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   border-right: 1px #e6e6e6 solid;
+  padding: 1.4rem 2rem;
 }
 
 .menuFilterLaws {
@@ -65,6 +65,10 @@
   border-right: 1px #e6e6e6 solid;
 }
 
+.addLawTitle {
+  padding-left: 0.5rem;
+}
+
 .button {
   border-radius: 6px;
   border: 1px solid #d6331d;
@@ -90,6 +94,10 @@
 
 .button:focus {
   outline: none;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .notifications {

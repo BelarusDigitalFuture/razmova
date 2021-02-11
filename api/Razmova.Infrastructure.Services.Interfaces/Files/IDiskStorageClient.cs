@@ -2,9 +2,10 @@
 
 namespace Razmova.Infrastructure.Services.Interfaces.Files
 {
-    public interface IFtpClient
+    public interface IDiskStorageClient
     {
-        Task<byte[]> DownloadAsync(string fullPath);
         Task<string> UploadAsync(byte[] file, string path);
+
+        Task<byte[]> DownloadAsync(string path);
     }
 }

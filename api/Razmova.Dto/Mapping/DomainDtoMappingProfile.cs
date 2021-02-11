@@ -3,6 +3,7 @@ using Razmova.Domain.Education;
 using Razmova.Domain.Locations;
 using Razmova.Domain.Users;
 using Razmova.Dto.Auth;
+using Razmova.Dto.Users;
 
 namespace Razmova.Dto.Mapping
 {
@@ -37,6 +38,10 @@ namespace Razmova.Dto.Mapping
                 .ForMember(x => x.BuildingNumber, opt => opt.Ignore())
                 .ForMember(x => x.ApartmentNumber, opt => opt.Ignore())
                 .ForMember(x => x.Additional, opt => opt.Ignore());
+
+            CreateMap<UserProfile, UserDetails>()
+                .ForMember(x => x.Username, opt => opt.MapFrom(src => src.ApplicationUser.UserName))
+                .ForMember(x => x.Email, opt => opt.MapFrom(src => src.ApplicationUser.Email));
         }
     }
 }
