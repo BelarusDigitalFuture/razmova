@@ -34,11 +34,11 @@
   border: 1px solid #d6331d;
   background-color: #d6331d;
   padding: 10px 12px 10px 16px;
+  margin-bottom: 1rem;
   color: #fdf3f2;
   font-family: Gilroy-Bold;
   font-size: 14px;
   letter-spacing: -0.02em;
-  text-align: left;
   display: flex;
   align-items: center;
   height: 44px;
@@ -59,6 +59,9 @@
 
 .button:hover {
   cursor: pointer;
+  background: #ae2917;
+  color: #fdf3f2;
+  border: 1px solid #ae2917;
 }
 
 .saveDrawBtn {
@@ -68,11 +71,25 @@
   color: #d6331d;
 }
 
+.saveDrawBtn:hover {
+  cursor: pointer;
+  background: #ae2917;
+  color: #fdf3f2;
+  border: 1px solid #ae2917;
+}
+
 .openPreviewBtn {
   margin-left: 1rem;
   border: 1px solid #fff;
   background-color: #fff;
   color: #d6331d;
+}
+
+.openPreviewBtn:hover {
+  cursor: pointer;
+  background: #ae2917;
+  color: #fdf3f2;
+  border: 1px solid #ae2917;
 }
 
 .buttons {

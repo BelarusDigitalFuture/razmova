@@ -18,6 +18,8 @@
 }
 
 .button {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   border-radius: 6px;
   border: 1px solid #d6331d;
   background-color: #d6331d;
@@ -43,9 +45,19 @@
 
 .button:focus {
   outline: none;
+  border: 3px solid #de5846;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: #ae2917;
+  color: #fdf3f2;
+  border: 1px solid #ae2917;
 }
 
 .saveDrawBtn {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
   margin-left: 1rem;
   border-radius: 6px;
   border: 1px solid #fcebe9;
@@ -68,6 +80,13 @@
 
 .saveDrawBtn:focus {
   outline: none;
+}
+
+.saveDrawBtn:hover {
+  cursor: pointer;
+  background: #ae2917;
+  color: #fdf3f2;
+  border: 1px solid #ae2917;
 }
 
 .buttons {

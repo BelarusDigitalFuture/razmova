@@ -61,8 +61,10 @@ const MenuBar = ({ handleLinkClick }) => {
       <div className={styles.addLaw}>
         <NavLink exact to="/load">
           <button className={styles.button}>
-            <Plus />
-            <span className={styles.addLawTitle}>Добавить законопроект</span>
+            <div className={styles.plus}>
+              <Plus />
+            </div>
+            Добавить законопроект
           </button>
         </NavLink>
       </div>

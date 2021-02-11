@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { StylesProvider } from "@material-ui/core/styles";
+import { StylesProvider, ThemeProvider } from "@material-ui/core/styles";
 
 import { history, getAuthorizedUserId } from "@helpers";
 import { alertActions, userActions } from "./helpers/store/actions";
+import { muiTheme as theme } from "@helpers";
 import { PrivateRoute } from "./components";
 import { HomePage } from "./routes/HomePage";
 import { LoginPage } from "./routes/LoginPage";
@@ -26,26 +27,29 @@ function App() {
 
   useEffect(() => {
     const authorizedUserId = getAuthorizedUserId();
-    const shouldLoadProfile = authorizedUserId && authorizedUserId !== auth.user?.id;
+    const shouldLoadProfile =
+      authorizedUserId && authorizedUserId !== auth.user?.id;
 
     shouldLoadProfile && dispatch(userActions.getCurrent());
-  }, [auth.accessToken]);
+  }, [auth.accessToken, auth.user?.id, dispatch]);
 
   return (
     <StylesProvider injectFirst>
-      {alert.message && (
-        <div className={`alert ${alert.type}`}>{alert.message}</div>
-      )}
-      <Router history={history}>
-        <Switch>
-          <PrivateRoute exact path="/" component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/load" component={LoadDocumentPage} />
-          <Route path="/discussion/:id" component={DiscussionPage} />
-          <Redirect from="*" to="/" />
-        </Switch>
-      </Router>
+      <ThemeProvider theme={theme}>
+        {alert.message && (
+          <div className={`alert ${alert.type}`}>{alert.message}</div>
+        )}
+        <Router history={history}>
+          <Switch>
+            <PrivateRoute exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/load" component={LoadDocumentPage} />
+            <Route path="/discussion/:id" component={DiscussionPage} />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </Router>
+      </ThemeProvider>
     </StylesProvider>
   );
 }
