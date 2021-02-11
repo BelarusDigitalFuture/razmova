@@ -27,6 +27,8 @@ namespace Razmova.WebApi
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
+            services.AddCors(options => options.AddPolicy("AllowAllCors", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
             IoCContainer.RegisterServices(services, Configuration);
 
             services.AddSpaStaticFiles(configuration =>
@@ -51,6 +53,7 @@ namespace Razmova.WebApi
                 app.UseSpaStaticFiles();
             }
 
+            app.UseCors("AllowAllCors");
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
