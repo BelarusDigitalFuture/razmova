@@ -7,23 +7,25 @@ using Razmova.Services.Interfaces;
 
 namespace Razmova.Application.Services.Files
 {
-    public class FtpFileService : IFtpFileService
+    public class DiskFileService : IDiskFileService
     {
-        private readonly IFtpClient _ftpClient;
+        private readonly IDiskStorageClient _storageClient;
 
-        public FtpFileService(IFtpClient ftpClient)
+        public DiskFileService(IDiskStorageClient storageClient)
         {
-            _ftpClient = ftpClient;
+            _storageClient = storageClient;
         }
 
-        public async Task<UserFile> DownloadAsync(string path, string filename)
+        public async Task<string> UploadAsync(UserFile file, string path)
         {
-            return await DownloadAsync($"{path}/{filename}").ConfigureAwait(false);
+            var filePath = GenerateFilePath(path, file.Extension);
+
+            return await _storageClient.UploadAsync(file.Content, filePath);
         }
 
         public async Task<UserFile> DownloadAsync(string fullPath)
         {
-            var content = await _ftpClient.DownloadAsync(fullPath).ConfigureAwait(false);
+            var content = await _storageClient.DownloadAsync(fullPath).ConfigureAwait(false);
 
             return new UserFile
             {
@@ -31,13 +33,6 @@ namespace Razmova.Application.Services.Files
                 Extension = fullPath.Split(".").Last(),
                 Name = fullPath.Split("/").Last()
             };
-        }
-
-        public async Task<string> UploadAsync(UserFile file, string path)
-        {
-            var filePath = GenerateFilePath(path, file.Extension);
-
-            return await _ftpClient.UploadAsync(file.Content, filePath);
         }
 
         private static string GenerateFilePath(string path, string extension) => $"{path}/{DateTime.UtcNow.Ticks}.{extension.Split("/").Last()}";

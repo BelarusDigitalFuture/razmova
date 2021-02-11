@@ -3,10 +3,9 @@ using Razmova.Domain.Files;
 
 namespace Razmova.Services.Interfaces
 {
-    public interface IFtpFileService
+    public interface IDiskFileService
     {
         Task<string> UploadAsync(UserFile file, string path);
-        Task<UserFile> DownloadAsync(string path, string filename);
         Task<UserFile> DownloadAsync(string fullPath);
     }
 }

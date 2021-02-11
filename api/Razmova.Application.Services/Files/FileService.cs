@@ -14,27 +14,27 @@ namespace Razmova.Application.Services.Files
         private const string DefaultDocumentStoragePath = "docs";
 
         private readonly IFileRepository _fileRepository;
-        private readonly IFtpFileService _ftpFileService;
+        private readonly IDiskFileService _diskFileService;
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public FileService(IFtpFileService ftpFileService, IUserService userService, IFileRepository fileRepository, IMapper mapper)
+        public FileService(IUserService userService, IFileRepository fileRepository, IMapper mapper, IDiskFileService diskFileService)
         {
-            _ftpFileService = ftpFileService;
             _userService = userService;
             _fileRepository = fileRepository;
             _mapper = mapper;
+            _diskFileService = diskFileService;
         }
 
         public async Task<DocumentInfo> UploadFileAsync(UserFile file, Guid authorId, string host)
         {
             var author = await _userService.GetUserAsync(authorId).ConfigureAwait(false);
-            var filePath = await _ftpFileService.UploadAsync(file, GetStoragePath());
+            var filePath = await _diskFileService.UploadAsync(file, GetStoragePath());
 
             var document = new File
             {
                 AuthorId = authorId,
-                DonwloadLink = $"{host}/api/files/download{filePath}",
+                DownloadLink = $"{host}/api/files/download/{filePath}",
                 IsFilePathAbsolute = false,
                 Name = filePath.Split("/").Last(),
                 FriendlyName = file.FriendlyName
@@ -47,7 +47,7 @@ namespace Razmova.Application.Services.Files
 
         public async Task<UserFile> DownloadFileAsync(string path)
         {
-            return await _ftpFileService.DownloadAsync(path).ConfigureAwait(false);
+            return await _diskFileService.DownloadAsync(path).ConfigureAwait(false);
         }
 
         private static string GetStoragePath() => DefaultDocumentStoragePath;
