@@ -28,7 +28,7 @@ namespace Razmova.Application.Services.Files
 
         public async Task<DocumentInfo> UploadFileAsync(UserFile file, Guid authorId, string host)
         {
-            var author = await _userService.GetUserAsync(authorId).ConfigureAwait(false);
+            var author = await _userService.GetProfileAsync(authorId).ConfigureAwait(false);
             var filePath = await _diskFileService.UploadAsync(file, GetStoragePath());
 
             var document = new File
