@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +33,9 @@ namespace Razmova.WebApi.Controllers
         [HttpPost]
         public async Task<DocumentInfo> UploadFileAsync([FromForm] UploadFileModel model)
         {
-            var fileContent = await ReadFormFileAsync(model.File, FileFormatHelper.DocumentMimeTypes).ConfigureAwait(false);
+            var allowedFormats = FileFormatHelper.DocumentMimeTypes.Concat(FileFormatHelper.ImageMimeTypes).ToArray();
+
+            var fileContent = await ReadFormFileAsync(model.File, allowedFormats).ConfigureAwait(false);
 
             return await _fileService.UploadFileAsync(fileContent, UserId, $"{_contextAccessor.HttpContext.Request.Scheme}://{_contextAccessor.HttpContext.Request.Host}").ConfigureAwait(false);
         }
