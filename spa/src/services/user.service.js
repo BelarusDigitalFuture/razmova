@@ -1,11 +1,12 @@
 import { config } from "../globals";
-import { authHeader } from "../helpers";
+import { fetcher, setAccessToken, removeAuthTokens } from "@helpers";
 
 export const userService = {
   login,
   logout,
   register,
   getAll,
+  getCurrent,
   getById,
   update,
   delete: _delete,
@@ -18,37 +19,40 @@ function login(username, password) {
     body: JSON.stringify({ username, password }),
   };
 
-  return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+  return fetcher(`${config.apiUrl}/Auth/login`, requestOptions)
     .then(handleResponse)
-    .then((user) => {
-      // store user details and jwt token in local storage to keep user logged in between page refreshes
-      localStorage.setItem("user", JSON.stringify(user));
-
-      return user;
+    .then((payload) => {
+      setAccessToken(payload.accessToken);
+      return payload;
     });
 }
 
 function logout() {
-  // remove user from local storage to log user out
-  localStorage.removeItem("user");
+  removeAuthTokens();
 }
 
 function getAll() {
   const requestOptions = {
-    method: "GET",
-    headers: authHeader(),
+    method: "GET"
   };
 
-  return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
+  return fetcher(`${config.apiUrl}/users/all`, requestOptions).then(handleResponse);
+}
+
+function getCurrent() {
+  const requestOptions = {
+    method: "GET"
+  };
+
+  return fetcher(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
 function getById(id) {
   const requestOptions = {
-    method: "GET",
-    headers: authHeader(),
+    method: "GET"
   };
 
-  return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(
+  return fetcher(`${config.apiUrl}/users/${id}`, requestOptions).then(
     handleResponse
   );
 }
@@ -60,7 +64,7 @@ function register(user) {
     body: JSON.stringify(user),
   };
 
-  return fetch(`${config.apiUrl}/users/register`, requestOptions).then(
+  return fetcher(`${config.apiUrl}/users/register`, requestOptions).then(
     handleResponse
   );
 }
@@ -68,11 +72,11 @@ function register(user) {
 function update(user) {
   const requestOptions = {
     method: "PUT",
-    headers: { ...authHeader(), "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
   };
 
-  return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(
+  return fetcher(`${config.apiUrl}/users/${user.id}`, requestOptions).then(
     handleResponse
   );
 }
@@ -80,11 +84,10 @@ function update(user) {
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
   const requestOptions = {
-    method: "DELETE",
-    headers: authHeader(),
+    method: "DELETE"
   };
 
-  return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(
+  return fetcher(`${config.apiUrl}/users/${id}`, requestOptions).then(
     handleResponse
   );
 }

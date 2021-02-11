@@ -15,7 +15,7 @@ export function configureFakeBackend() {
             return authenticate();
           case url.endsWith("/users/register") && method === "POST":
             return register();
-          case url.endsWith("/users") && method === "GET":
+          case url.endsWith("/users/all") && method === "GET":
             return getUsers();
           case url.match(/\/users\/\d+$/) && method === "DELETE":
             return deleteUser();
