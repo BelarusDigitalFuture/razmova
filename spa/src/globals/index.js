@@ -1,5 +1,5 @@
-const config = JSON.stringify({
-  apiUrl: "http://localhost:4000",
-});
+const config = {
+  apiUrl: "http://annyos32-001-site1.dtempurl.com/api"
+};
 
 export { config };

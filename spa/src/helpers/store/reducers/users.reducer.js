@@ -3,6 +3,7 @@ import { userConstants } from "../constants";
 export function users(state = {}, action) {
   switch (action.type) {
     case userConstants.GETALL_REQUEST:
+    case userConstants.GET_CURRENT_REQUEST:
       return {
         loading: true,
       };
@@ -10,7 +11,13 @@ export function users(state = {}, action) {
       return {
         items: action.users,
       };
+      case userConstants.GET_CURRENT_SUCCESS:
+        return {
+          ...state,
+          user: action.user
+        };
     case userConstants.GETALL_FAILURE:
+    case userConstants.GET_CURRENT_FAILURE:
       return {
         error: action.error,
       };

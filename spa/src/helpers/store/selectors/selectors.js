@@ -1,5 +1,6 @@
 export const getUsers = (state) => state.users;
 
+export const getAuth = (state) => state.authentication;
 export const getUser = (state) => state.authentication.user;
 export const getLoggingIn = (state) => state.authentication.loggingIn;
 
