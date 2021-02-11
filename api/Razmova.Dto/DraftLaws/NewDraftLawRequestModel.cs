@@ -34,5 +34,7 @@ namespace Razmova.Dto.DraftLaws
         public IList<string> Tags { get; set; }
 
         public IList<NewParticipant> Participants { get; set; }
+
+        public IList<NewParticipant> Initiators { get; set; }
     }
 }

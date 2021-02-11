@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using Razmova.Domain.Documents;
 
 namespace Razmova.Domain.Mapping
@@ -8,8 +7,7 @@ namespace Razmova.Domain.Mapping
     {
         public DomainModelsMappingProfile()
         {
-            CreateMap<File, DocumentInfo>()
-                .ForMember(x => x.AuthorId, opt => opt.MapFrom(src => src.Author == null ? Guid.Empty : src.Author.Id));
+            CreateMap<File, DocumentInfo>();
         }
     }
 }
