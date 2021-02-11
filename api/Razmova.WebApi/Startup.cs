@@ -29,6 +29,11 @@ namespace Razmova.WebApi
 
             IoCContainer.RegisterServices(services, Configuration);
 
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "wwwroot";
+            });
+
             services.AddRazmovaSwagger();
         }
 
@@ -37,6 +42,13 @@ namespace Razmova.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+
+            app.UseStaticFiles();
+
+            if (!env.IsDevelopment())
+            {
+                app.UseSpaStaticFiles();
             }
 
             app.UseSwagger();
@@ -48,8 +60,8 @@ namespace Razmova.WebApi
             });
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
+            
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -59,6 +71,11 @@ namespace Razmova.WebApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "wwwroot";
             });
         }
     }
