@@ -7,3 +7,5 @@ export const getLoggingIn = (state) => state.authentication.loggingIn;
 export const getRegistring = (state) => state.registration.registering;
 
 export const getAlert = (state) => state.alert;
+
+export const getFiles = (state) => state.files;

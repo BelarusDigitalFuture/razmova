@@ -20,7 +20,6 @@ function login(username, password) {
   };
 
   return fetcher(`${config.apiUrl}/Auth/login`, requestOptions)
-    .then(handleResponse)
     .then((payload) => {
       setAccessToken(payload.accessToken);
       return payload;
@@ -36,7 +35,7 @@ function getAll() {
     method: "GET"
   };
 
-  return fetcher(`${config.apiUrl}/users/all`, requestOptions).then(handleResponse);
+  return fetcher(`${config.apiUrl}/users/all`, requestOptions);
 }
 
 function getCurrent() {
@@ -44,7 +43,7 @@ function getCurrent() {
     method: "GET"
   };
 
-  return fetcher(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
+  return fetcher(`${config.apiUrl}/users`, requestOptions);
 }
 
 function getById(id) {
@@ -52,9 +51,7 @@ function getById(id) {
     method: "GET"
   };
 
-  return fetcher(`${config.apiUrl}/users/${id}`, requestOptions).then(
-    handleResponse
-  );
+  return fetcher(`${config.apiUrl}/users/${id}`, requestOptions);
 }
 
 function register(user) {
@@ -64,9 +61,7 @@ function register(user) {
     body: JSON.stringify(user),
   };
 
-  return fetcher(`${config.apiUrl}/users/register`, requestOptions).then(
-    handleResponse
-  );
+  return fetcher(`${config.apiUrl}/users/register`, requestOptions);
 }
 
 function update(user) {
@@ -76,9 +71,7 @@ function update(user) {
     body: JSON.stringify(user),
   };
 
-  return fetcher(`${config.apiUrl}/users/${user.id}`, requestOptions).then(
-    handleResponse
-  );
+  return fetcher(`${config.apiUrl}/users/${user.id}`, requestOptions);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -87,25 +80,5 @@ function _delete(id) {
     method: "DELETE"
   };
 
-  return fetcher(`${config.apiUrl}/users/${id}`, requestOptions).then(
-    handleResponse
-  );
-}
-
-function handleResponse(response) {
-  return response.text().then((text) => {
-    const data = text && JSON.parse(text);
-    if (!response.ok) {
-      if (response.status === 401) {
-        // auto logout if 401 response returned from api
-        logout();
-        // location.reload(true);
-      }
-
-      const error = (data && data.message) || response.statusText;
-      return Promise.reject(error);
-    }
-
-    return data;
-  });
+  return fetcher(`${config.apiUrl}/users/${id}`, requestOptions);
 }

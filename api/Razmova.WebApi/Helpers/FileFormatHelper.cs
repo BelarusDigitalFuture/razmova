@@ -18,7 +18,8 @@ namespace Razmova.WebApi.Helpers
             {"svg+xml", "image/svg"},
             {"pdf", "application/pdf"},
             {"docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
-            {"txt", "text/plain"}
+            {"txt", "text/plain"},
+            {"zip", "application/x-zip-compressed"},
         };
 
         public static string GetContentTypeByExtension(string extension) => MimeTypeMappings.TryGetValue(extension, out var format) ? format : null;
@@ -34,7 +35,8 @@ namespace Razmova.WebApi.Helpers
             "application/x-gzpdf",
             "application/msword",
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "text/plain"
+            "text/plain",
+            "application/x-zip-compressed"
         };
     }
 }

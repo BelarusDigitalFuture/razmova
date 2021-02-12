@@ -4,7 +4,6 @@ export function configureFakeBackend() {
   let realFetch = window.fetch;
   window.fetch = function (url, opts) {
     const { method, headers } = opts;
-    const body = opts.body && JSON.parse(opts.body);
 
     return new Promise((resolve, reject) => {
       setTimeout(handleRoute, 500);
@@ -25,6 +24,8 @@ export function configureFakeBackend() {
               .catch((error) => reject(error));
         }
       }
+
+      const body = opts.body && JSON.parse(opts.body);
 
       function authenticate() {
         const { username, password } = body;

@@ -21,14 +21,14 @@ namespace Razmova.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.AddMvc().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
-            services.AddCors(options => options.AddPolicy("AllowAllCors", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
-
+            
             IoCContainer.RegisterServices(services, Configuration);
 
             services.AddSpaStaticFiles(configuration =>
@@ -53,7 +53,7 @@ namespace Razmova.WebApi
                 app.UseSpaStaticFiles();
             }
 
-            app.UseCors("AllowAllCors");
+            
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
@@ -64,7 +64,11 @@ namespace Razmova.WebApi
 
             app.UseHttpsRedirection();
             app.UseRouting();
-            
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()); // allow credentials
 
             app.UseAuthentication();
             app.UseAuthorization();

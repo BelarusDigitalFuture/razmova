@@ -2,16 +2,23 @@ import { NavLink } from "react-router-dom";
 import { Button, ButtonGroup } from "@material-ui/core";
 import classNames from "classnames";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { ReactComponent as CaretRight } from "../../../assets/icons/CaretRight.svg";
 import { UploadFile } from "./../UploadFile";
 import styles from "./Step1.module.css";
+import { fileActions } from "@actions";
+import { getFiles } from "@helpers/store/selectors/selectors";
 
 const Step1 = () => {
   const [isNewLawActive, SetNewLawActive] = useState(true);
   const [isEditLawActive, SetEditLawActive] = useState(false);
   const [isLawChecked, SetLawChecked] = useState(true);
   const [isCodeChecked, SetCodeChecked] = useState(false);
+  const files = useSelector(getFiles);
+  const dispatch = useDispatch();
+  const uploadFileAction = (file) => dispatch(fileActions.upload(file));
+
   const onStatus = () => {
     SetNewLawActive((isNewLawActive) => !isNewLawActive);
     SetEditLawActive((isEditLawActive) => !isEditLawActive);
@@ -80,7 +87,7 @@ const Step1 = () => {
           </Button>
         </ButtonGroup>
         <div className={styles.subtitle}>Загрузка документа</div>
-        <UploadFile />
+        <UploadFile uploadAction={uploadFileAction} {...files} />
         <NavLink exact to="/load/step2">
           <button className={styles.button}>
             <span>Далее</span>
