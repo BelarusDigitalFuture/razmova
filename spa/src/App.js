@@ -13,6 +13,7 @@ import { RegisterPage } from "./routes/RegisterPage";
 import { DiscussionPage } from "./routes/DiscussionPage/DiscussionPage";
 import { getAlert, getAuth } from "./helpers/store/selectors/selectors";
 import { LoadDocumentPage } from "./routes/LoadDocumentPage/LoadDocumentPage";
+import { AllProjectsPage } from "./routes/AllProjectsPage";
 
 function App() {
   const alert = useSelector(getAlert);
@@ -43,6 +44,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={HomePage} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/" component={AllProjectsPage} />
             <Route path="/register" component={RegisterPage} />
             <PrivateRoute path="/load" component={LoadDocumentPage} />
             <Route path="/discussion/:projectId" component={DiscussionPage} />
