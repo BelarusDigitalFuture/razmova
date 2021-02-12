@@ -18,8 +18,8 @@ function login(username, password, from) {
     dispatch(request({ username }));
 
     userService.login(username, password).then(
-      (user) => {
-        dispatch(success(user));
+      (payload) => {
+        dispatch(success(payload));
         history.push(from);
       },
       (error) => {
@@ -32,8 +32,8 @@ function login(username, password, from) {
   function request(user) {
     return { type: userConstants.LOGIN_REQUEST, user };
   }
-  function success(user) {
-    return { type: userConstants.LOGIN_SUCCESS, user };
+  function success(payload) {
+    return { type: userConstants.LOGIN_SUCCESS, payload };
   }
   function failure(error) {
     return { type: userConstants.LOGIN_FAILURE, error };

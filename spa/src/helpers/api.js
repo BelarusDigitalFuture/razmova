@@ -8,12 +8,16 @@ function updateOptions(options) {
         headers = {};
     }
 
-    attachAuthHeader(headers);
-    attachDefaultHeaders(headers);
+    updateHeaders(headers);
     
     extendedOptions.headers = headers;
 
     return extendedOptions;
+}
+
+export function updateHeaders(headers) {
+    attachAuthHeader(headers);
+    attachDefaultHeaders(headers);
 }
 
 function attachAuthHeader(headers) {
@@ -27,7 +31,19 @@ function attachAuthHeader(headers) {
 function attachDefaultHeaders(headers) {
     headers["Access-control-allow-origin"] = "*";
 };
+
+function handleResponse(response) {
+    return response.text().then((text) => {
+      const data = text && JSON.parse(text);
+      if (!response.ok) {
+        const error = (data && data.message) || response.statusText;
+        return Promise.reject(error);
+      }
+  
+      return data;
+    });
+}
   
 export function fetcher(url, options) {
-    return fetch(url, updateOptions(options));
+    return fetch(url, updateOptions(options)).then(handleResponse);
 }

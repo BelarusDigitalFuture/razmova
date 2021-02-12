@@ -15,12 +15,10 @@ namespace Razmova.Application.Services.Files
 
         private readonly IFileRepository _fileRepository;
         private readonly IDiskFileService _diskFileService;
-        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public FileService(IUserService userService, IFileRepository fileRepository, IMapper mapper, IDiskFileService diskFileService)
+        public FileService(IFileRepository fileRepository, IMapper mapper, IDiskFileService diskFileService)
         {
-            _userService = userService;
             _fileRepository = fileRepository;
             _mapper = mapper;
             _diskFileService = diskFileService;
@@ -28,7 +26,6 @@ namespace Razmova.Application.Services.Files
 
         public async Task<DocumentInfo> UploadFileAsync(UserFile file, Guid authorId, string host)
         {
-            var author = await _userService.GetProfileAsync(authorId).ConfigureAwait(false);
             var filePath = await _diskFileService.UploadAsync(file, GetStoragePath());
 
             var document = new File

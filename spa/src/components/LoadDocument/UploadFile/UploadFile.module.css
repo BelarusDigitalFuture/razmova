@@ -1,0 +1,37 @@
+.title {
+    font-family: Gilroy-Bold;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+}
+  
+.subtitle {
+    font-family: Gilroy;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.progressBarContainer {
+    display: grid;
+    grid-template-columns: 2rem auto 4rem;
+    background: #F9F9F9;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.progressBarText {
+    justify-content: space-between;
+    display: flex;
+    font-size: 16px;
+}
+
+.stop {
+    font-size: 32px;
+    margin-left: auto;
+}
+
+.uploadCompletedMsg {
+    color:#17B579;
+    line-height: 30px;
+}

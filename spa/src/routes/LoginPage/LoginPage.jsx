@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { userActions } from "../../helpers/store/actions";
+import { userActions } from "@actions";
 import styles from "./LoginPage.module.css";
 
 function LoginPage() {

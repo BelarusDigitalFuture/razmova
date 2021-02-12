@@ -8,6 +8,10 @@ module.exports = {
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@routes': path.resolve(__dirname, 'src/routes'),
       '@helpers': path.resolve(__dirname, 'src/helpers'),
+      '@services': path.resolve(__dirname, 'src/services'),
+      '@actions': path.resolve(__dirname, 'src/helpers/store/actions'),
+      '@constants': path.resolve(__dirname, 'src/helpers/store/constants'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
     }
   },
 };
