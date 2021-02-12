@@ -1,0 +1,12 @@
+.content {
+    display: flex;
+    width: 100vw;
+  }
+  
+  .blocks {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e5e5e5;
+    flex: 0 1 calc(100vw - 460px);
+  }
+  

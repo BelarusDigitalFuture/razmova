@@ -23,7 +23,7 @@ const MenuBar = ({ handleLinkClick }) => {
   }, [dispatch]);
 
   const MenuItems = [
-    { title: "Все законопроекты", to: "/" },
+    { title: "Все законопроекты", to: "./AllProjectsPage" },
     { title: "Мои законопроекты", to: "/" },
     { title: "Действующие законы", to: "/" },
   ];
