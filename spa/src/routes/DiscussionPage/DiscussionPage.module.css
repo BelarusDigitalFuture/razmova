@@ -3,6 +3,11 @@
     height: 100%;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+}
+
 .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -43,8 +48,15 @@
     text-transform: uppercase;
 }
 
+.backToAll {
+    cursor: pointer;
+    color: #272727;
+    margin-right: 16px;
+}
+
 .back svg {
     margin-right: 8px;
+    color: #D6331D;
 }
 
 .text {
@@ -103,7 +115,7 @@
     top: 35%;
 }
 
-.anchor:nth-of-type(3) {
+.anchorCreate {
     top: 55%;
 }
 
@@ -156,10 +168,15 @@
 }
 
 
-.tags, .authors, .statuses, .authors, .comments, .commentAuthorTags {
+.tags, .authors, .statuses, .authors, .comments, .commentAuthorTags, .answers {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.answers {
+    padding-left: 16px;
+    border-left: 1px solid #E6E6E6;
 }
 
 .tags {

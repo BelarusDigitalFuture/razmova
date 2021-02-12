@@ -45,7 +45,7 @@ function App() {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
             <Route path="/load" component={LoadDocumentPage} />
-            <Route path="/discussion/:id" component={DiscussionPage} />
+            <Route path="/discussion/:projectId" component={DiscussionPage} />
             <Redirect from="*" to="/" />
           </Switch>
         </Router>
