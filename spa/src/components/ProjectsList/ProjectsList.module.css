@@ -1,0 +1,22 @@
+.wrapper {
+  margin: 2rem;
+}
+
+.title {
+  display: flex;
+  align-content: center;
+  margin-bottom: 2rem;
+  color: #272727;
+  font-family: Gilroy-Bold;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+}
