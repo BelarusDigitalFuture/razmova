@@ -1,3 +1,7 @@
+.wrapper {
+  flex: 0 1 460px;
+}
+
 .statItem {
   display: flex;
   justify-content: space-between;
