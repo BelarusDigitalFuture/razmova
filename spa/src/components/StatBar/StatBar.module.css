@@ -1,0 +1,33 @@
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px #e6e6e6 solid;
+  padding: 2rem;
+}
+
+.statInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  color: #272727;
+  font-family: Gilroy-Bold;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 52px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.title {
+  color: #666;
+  font-family: Gilroy;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
