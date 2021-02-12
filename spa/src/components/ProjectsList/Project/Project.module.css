@@ -46,6 +46,8 @@
 }
 
 .comments {
+  display: flex;
+  align-items: center;
   flex: 0 1 92px;
   justify-content: flex-end;
 }
