@@ -44,7 +44,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/" component={HomePage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/" component={AllProjectsPage} />
+            <Route path="/all" component={AllProjectsPage} />
             <Route path="/register" component={RegisterPage} />
             <PrivateRoute path="/load" component={LoadDocumentPage} />
             <Route path="/discussion/:projectId" component={DiscussionPage} />
