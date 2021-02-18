@@ -8,11 +8,11 @@ export const fileActions = {
     clearUpload
 };
 
-function upload(formData, fileName) {
+function upload(formData) {
   let source = axios.CancelToken.source();
 
   return (dispatch) => {
-    dispatch(request(formData, source.cancel, fileName));
+    dispatch(request(formData, source.cancel));
 
     fileService.upload(formData, source, (percent) => dispatch(progress(formData, percent))).then(
       (payload) => {
@@ -25,8 +25,8 @@ function upload(formData, fileName) {
     );
   };
 
-  function request(file, stop, fileName) {
-    return { type: fileConstants.UPLOAD_REQUEST, file, stop, fileName};
+  function request(file, stop) {
+    return { type: fileConstants.UPLOAD_REQUEST, file, stop};
   }
   function progress(file, progress) {
     return { type: fileConstants.UPLOAD_PROGRESS, file, progress };
@@ -44,7 +44,7 @@ function clearUpload() {
     dispatch(request());
   };
 
-  function request(file, stop, fileName) {
+  function request() {
     return { type: fileConstants.CLEAR_UPLOAD};
   }
 }

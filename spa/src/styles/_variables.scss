@@ -1,0 +1,20 @@
+$color-primary-light: #D6331D;
+$color-primary-main: #D6331D;
+$color-primary-dark: #882012;
+$color-primary-text: #FDF3F2;
+
+$color-secondary-light: #FDF3F2;
+$color-secondary-main: #FDF3F2;
+$color-secondary-dark: #882012;
+$color-secondary-text: #D6331D;
+
+:export {
+  primary: $color-primary-main;
+  primaryLight: $color-primary-light;
+  primaryDark: $color-primary-dark;
+  primaryText: $color-primary-text;
+  secondary: $color-secondary-main;
+  secondaryLight: $color-secondary-light;
+  secondaryDark: $color-secondary-dark;
+  secondaryText: $color-secondary-text;
+}
