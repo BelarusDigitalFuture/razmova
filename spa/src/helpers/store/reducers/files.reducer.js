@@ -8,7 +8,8 @@ export function files(state = {}, action) {
             loading: true,
             stop: action.stop,
             file: action.file,
-            fileName: action.fileName
+            fileName: action.fileName,
+            progress: 0
         };
     case fileConstants.CLEAR_UPLOAD:
         return {
@@ -29,8 +30,7 @@ export function files(state = {}, action) {
         return {
             ...state,
             loading: false,
-            uploadedFile: action.payload,
-            progress: 0
+            uploadedFile: action.payload
         };
     case fileConstants.UPLOAD_FAILURE:
         return {

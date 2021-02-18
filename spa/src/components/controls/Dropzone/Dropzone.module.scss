@@ -1,0 +1,46 @@
+@import '../../../styles/variables';
+
+.title {
+    font-family: Gilroy-Bold;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 2px;
+    margin: 0;
+  }
+  
+.subtitle {
+    font-family: Gilroy;
+    font-size: 14px;
+    padding: 2px;
+    margin: 0;
+}
+
+.dropzoneContainer {
+    padding: 1.5rem;
+    position: relative;
+    text-align: center;
+}
+
+/* workaround since no dashed border spacing can be specified */
+
+.svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    padding: 2px;
+    overflow: visible;
+}
+
+.dropzoneContainer.active rect {
+    stroke: $color-primary-light;
+}
+
+.rect {
+    fill: none;
+    stroke-width: 2;
+    stroke-dasharray: 8, 8;
+    stroke: #CCCCCC;
+}
+
